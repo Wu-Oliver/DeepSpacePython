@@ -2,7 +2,7 @@ from wpilib.joystick import Joystick
 from wpilib.buttons.joystickbutton import JoystickButton
 from wpilib.interfaces import GenericHID
 
-class LogitechController(Joystick):
+class XboxController(Joystick):
     
     def __init__(self):
         self.xButton = JoystickButton(3)
@@ -44,3 +44,9 @@ class LogitechController(Joystick):
 		    return self.getPOV()
 		except:
 			return -1
+
+    def getRightBumperStatus(self):
+        self.getRawButtonPressed(GenericHID.Hand.kRight)
+
+    def getLeftBumperStatus(self):
+        self.getRawButtonPressed(GenericHID.Hand.kLeft)
