@@ -133,6 +133,7 @@ class RobotMap:
     self.moderateDriveSpeed = 1.2
     self.highDriveSpeed = 1.4
 
+  #Set speed multipliers
   def setArmMultiplier(self,multiplier):
     self.armSpeedMultiplier = multiplier
   
