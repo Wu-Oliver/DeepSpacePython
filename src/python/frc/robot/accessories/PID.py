@@ -1,3 +1,4 @@
+import time
 class PID:
 
     def __init__(self):
@@ -13,12 +14,11 @@ class PID:
         self.kD = 0
         self.kF = 0
 
-        #Variables for in between loops
+        #Variables for in between PID loops
         self.lastProportional = 0 
         self.lastTime = 0
         self.currentTime = 0
         self.timeDifference = 0
-
         self.target = 0
         self.output = 0
     
@@ -35,12 +35,17 @@ class PID:
         self.target = newTarget
 
     def updatePID(self,input):
-        lastTime = currentTime
-        currentTime = #System.currentTimeMillis()
-        timeDifference = currentTime - lastTime
-        lastProportional = kP
-        kP = P_GAIN * (target - input)
-        kI += kP
-        kD = ((kP - lastProportional) / (timeDifference)) * D_GAIN
-        output = kP + kI * I_GAIN - kD + F_GAIN * (input)
-        
+        self.lastTime = lambda: int(round(time.time() * 1000))
+        self.currentTime = lambda: int(round(time.time() * 1000))
+        self.timeDifference = currentTime - lastTime
+        self.lastProportional = kP
+        self.kP = P_GAIN * (target - input)
+        self.kI += kP
+        self.kD = ((kP - lastProportional) / (timeDifference)) * D_GAIN
+        self.output = kP + kI * I_GAIN - kD + F_GAIN * (input)
+
+    def getOutput(self):
+        return self.output
+
+    def getPIDConstants(self):
+        return ("PID: " + "P: "+ P_GAIN + " I: " + I_GAIN + " D: " + D_GAIN)
