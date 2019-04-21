@@ -50,8 +50,8 @@ class RobotMap:
     self.rightIntakeSolenoid = 1
 
     #INTAKE SPEED CONSTANTS
-    self.shootBallFast = 0.8;
-    self.shootBallSlow = -0.5;
+    self.shootBallFast = 0.8
+    self.shootBallSlow = -0.5
 
     #Arm Angle Level Constants
     self.groundLevelAngle = 0
