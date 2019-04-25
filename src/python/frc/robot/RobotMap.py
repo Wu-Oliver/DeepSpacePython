@@ -1,6 +1,6 @@
 class RobotMap:
 
-  def __init__(self):
+  def RobotMap(self):
     self.armSpeedMultiplier = 1
     self.driveSpeedMultiplier = 1
     self.wristSpeedMultiplier = 1

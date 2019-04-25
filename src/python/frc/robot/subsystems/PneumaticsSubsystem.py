@@ -6,6 +6,7 @@ from wpilib import Solenoid
 class PneumaticsSubsystem(Subsystem):
 
     def __init__(self):
+        
         self.mainCompressor = Compressor(RobotMap.PCMID)
         self.intakeSolenoid = Solenoid(RobotMap.PCMID,RobotMap.intakeSolenoidChannel)
         self.isExtended = False

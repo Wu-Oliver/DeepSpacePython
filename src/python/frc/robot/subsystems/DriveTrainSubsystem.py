@@ -47,10 +47,10 @@ class DriveTrainSubsystem(Subsystem):
         #self.setDefaultCommand(ArcadeDrive())
 
     def setLeftDrivePower(self,power):
-        leftPower = power
+        self.leftPower = power
 
     def setRightDrivePower(self,power):
-        rightPower = power
+        self.rightPower = power
 
     def updateMotorOutputs(self):
         self.leftDriveMotor1 = -leftPower
