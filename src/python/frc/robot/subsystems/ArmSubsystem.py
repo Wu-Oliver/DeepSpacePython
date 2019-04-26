@@ -25,8 +25,8 @@ class ArmSubsystem(Subsystem):
         self.armMotor1 = CANSparkMax(RobotMap.armBaseMotor1,MotorType.kBrushless)
         self.armMotor2 = CANSparkMax(RobotMap.armBaseMotor2,MotorType.kBrushless)
 
-        self.armEncoder1 = CANEncoder(armMotor1)
-        self.armEncoder2 = CANEncoder(armMotor2)
+        self.armEncoder1 = self.armMotor1.getEncoder()
+        self.armEncoder2 = self.armMotor2.getEncoder()
 
         self.currentArmPower = 0
         self.isOverride = False
@@ -52,16 +52,14 @@ class ArmSubsystem(Subsystem):
 
     def isArmAtBottom(self):
         updateBottomLimit()
-        if (getRotationAngle() >= (armBottomLimit - 2) and getRotationAngle() <= (armBottomLimit + 2):
+        if (getRotationAngle() >= (armBottomLimit - 2)) and (getRotationAngle() <= (armBottomLimit + 2)):
             return True
         else:
             return False
 
-    def isArmAtTop(self):
-        return False
+    #def isArmAtTop(self):
 
-    def getLimitSwitch(self):
-        return not self.bottomLimitSwitch.get()
+    #def getLimitSwitch(self):
 
     def setArmPower(self,power):
         if isArmAtBottom() and power > 0:
