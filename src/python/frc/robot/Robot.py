@@ -1,6 +1,7 @@
 
 import wpilib
 import wpilib.drive
+from wpilib.command import Scheduler
 from src.python.frc.robot.subsystems.ArmSubsystem import ArmSubsystem
 from src.python.frc.robot.subsystems.DriveTrainSubsystem import DriveTrainSubsystem
 from src.python.frc.robot.subsystems.IntakeSubsystem import IntakeSubsystem
@@ -16,23 +17,23 @@ class SpartanRobot(TimedRobot):
     
     def robotInit(self):
         self.drivetrain = DriveTrainSubsystem()  
-        self.pneumatics = PneumaticsSubsystem()
-        self.arm = ArmSubsystem()
-        self.wrist = WristSubsystem()
-        self.intake = IntakeSubsystem()
         self.oi = OI()
+        self.drivetrain.updateMotorOutputs()
+    
+    def robotPeriodic(self):
+        self.drivetrain.updateMotorOutputs()
 
     def autonomousInit(self):
         pass
     
     def autonomousPeriodic(self):
-        pass
+        self.Scheduler.getInstance().run()
         
     def teleopInit(self):
         pass
 
     def teleopPeriodic(self):
-        pass
+        self.Scheduler.getInstance().run()
 
 
 if __name__ == "__main__":

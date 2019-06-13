@@ -5,6 +5,7 @@ from src.python.frc.robot.accessories.ControllerXbox import Xbox
 from wpilib.interfaces import GenericHID
 from src.python.frc.robot.accessories.POVButton import POVButton
 from src.python.frc.robot.accessories.ModifierCombo import ModifierCombo
+from src.python.frc.robot.autocommands.ModifierButtonCombination import ModifierButtonCombination
 
 
 
@@ -64,25 +65,43 @@ class OI():
         #self.xboxStart.whenPressed(PneumaticsActivate());
         #self.logitechStart.whenPressed(AutonomousOveride());
 
-        mod1AndDPadDown.whenPressed(ModifierButtonCombination(66, 0))
-        mod1AndDPadUp.whenPressed(new ModifierButtonCombination(175, 0))
-        mod1AndA.whenPressed(new ModifierButtonCombination(0, 20));
-        mod1AndX.whenPressed(new ModifierButtonCombination(0, 20));
-        mod1AndB.whenPressed(new ModifierButtonCombination(0, 20));
-        mod1AndY.whenPressed(new ModifierButtonCombination(0, 20));
-        // xboxBack.whenPressed(new PneumaticsActivate());
+        #Defining button combinations for modifier 1
+        self.mod1AndDPadDown.whenPressed(ModifierButtonCombination(66, 0))
+        self.mod1AndDPadUp.whenPressed(ModifierButtonCombination(175, 0))
+        self.mod1AndA.whenPressed(ModifierButtonCombination(0, 20))
+        self.mod1AndX.whenPressed(ModifierButtonCombination(0, 20))
+        self.mod1AndB.whenPressed(ModifierButtonCombination(0, 20))
+        self.mod1AndY.whenPressed(ModifierButtonCombination(0, 20))
+        #self.xboxBack.whenPressed(PneumaticsActivate())
 
-        // Defining button combinations for modifier 2.
-        mod2AndDPadDown.whenPressed(new ModifierButtonCombination(0, 20));
-        mod2AndDPadUp.whenPressed(new ModifierButtonCombination(0, 20));
-        mod2AndA.whenPressed(new ModifierButtonCombination(0, 20));
-        mod2AndX.whenPressed(new ModifierButtonCombination(0, 20));
-        mod2AndB.whenPressed(new ModifierButtonCombination(0, 20));
-        mod2AndY.whenPressed(new ModifierButtonCombination(0, 20));
-                
-
-
-
+        #Defining button combinations for modifier 2.
+        self.mod2AndDPadDown.whenPressed(ModifierButtonCombination(0, 20))
+        self.mod2AndDPadUp.whenPressed(ModifierButtonCombination(0, 20))
+        self.mod2AndA.whenPressed(ModifierButtonCombination(0, 20))
+        self.mod2AndX.whenPressed(ModifierButtonCombination(0, 20))
+        self.mod2AndB.whenPressed(ModifierButtonCombination(0, 20))
+        self.mod2AndY.whenPressed(ModifierButtonCombination(0, 20))
+        
 
 
 
+
+
+        def getSecondaryControllerLeftStickY(self):
+            return self.xBoxController.getRawAxis(1)
+
+
+        def getSecondaryControllerRightStickY(self): 
+            return self.secondaryController.getRawAxis(5)
+
+        def getSecondaryControllerRightStickX(self):
+            return self.secondaryController.getRawAxis(4)
+        
+        def getSecondaryControllerLeftTrigger(self):
+            return self.secondaryController.getRawAxis(2)
+
+        def getSecondaryControllerRightTrigger(self):
+            return self.secondaryController.getRawAxis(3)
+
+        def AutonomousOveride(self):
+            return True
