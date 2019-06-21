@@ -3,7 +3,7 @@ from wpilib import Encoder
 from wpilib import ADXRS450_Gyro
 from wpilib import VictorSP
 from wpilib import SmartDashboard
-from src.python.frc.robot.RobotMap import RobotMap
+import RobotMap
 import math
 
 class DriveTrainSubsystem(Subsystem):

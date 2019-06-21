@@ -1,11 +1,11 @@
 from wpilib.joystick import Joystick
 from wpilib.buttons.joystickbutton import JoystickButton
-from src.python.frc.robot.accessories.ControllerLogitech import Logitech
-from src.python.frc.robot.accessories.ControllerXbox import Xbox
+from accessories.ControllerLogitech import Logitech
+from accessories.ControllerXbox import Xbox
 from wpilib.interfaces import GenericHID
-from src.python.frc.robot.accessories.POVButton import POVButton
-from src.python.frc.robot.accessories.ModifierCombo import ModifierCombo
-from src.python.frc.robot.autocommands.ModifierButtonCombination import ModifierButtonCombination
+from accessories.POVButton import POVButton
+from accessories.ModifierCombo import ModifierCombo
+from autocommands.ModifierButtonCombination import ModifierButtonCombination
 
 
 

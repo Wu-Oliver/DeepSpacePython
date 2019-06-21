@@ -1,6 +1,6 @@
 from wpilib.command import CommandGroup
-from src.python.frc.robot.autocommands.ArmRotateDegrees import ArmRotateDegrees
-from src.python.frc.robot.autocommands.WristRotateDegrees import WristRotateDegrees
+from autocommands.ArmRotateDegrees import ArmRotateDegrees
+from autocommands.WristRotateDegrees import WristRotateDegrees
 
 class ModifierButtonCombination(CommandGroup):
 

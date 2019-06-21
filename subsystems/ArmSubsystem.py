@@ -3,7 +3,7 @@ from rev._impl import CANEncoder
 from rev._impl.autogen.sim import MotorType
 from rev import CANSparkMax
 from wpilib import DigitalInput
-from src.python.frc.robot.RobotMap import RobotMap
+import RobotMap
 import math
 
 class ArmSubsystem(Subsystem):
