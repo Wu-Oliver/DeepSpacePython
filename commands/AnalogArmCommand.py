@@ -1,9 +1,9 @@
 from wpilib.command import Command
 from wpilib.smartdashboard import SmartDashboard
-from src.python.frc.robot.accessories.PID import PID
-from src.python.frc.robot.RobotMap import RobotMap
-from src.python.frc.robot.Robot import SpartanRobot
-from src.python.frc.robot.OI import OI
+from accessories.PID import PID
+import RobotMap
+from Robot import SpartanRobot
+import OI
 
 class AnalogArmCommand(Command):
     
