@@ -1,148 +1,149 @@
-class RobotMap:
+import math
 
-  def RobotMap(self):
-    self.armSpeedMultiplier = 1
-    self.driveSpeedMultiplier = 1
-    self.wristSpeedMultiplier = 1
+armSpeedMultiplier = 1
+driveSpeedMultiplier = 1
+wristSpeedMultiplier = 1
 
-    #PWM - Pulse Width Modulation Ports
-    self.leftDriveMotor1 = 7
-    self.leftDriveMotor2 = 8
-    self.leftDriveMotor3 = 9
+numberOfTicks = 2048
+wheelCircumference = 6*math.pi
 
-    self.rightDriveMotor1 = 0
-    self.rightDriveMotor2 = 1
-    self.rightDriveMotor3 = 2
+#PWM - Pulse Width Modulation Ports
+leftDriveMotor1 = 7
+leftDriveMotor2 = 8
+leftDriveMotor3 = 9
 
-    #WristMotor - Talon SRX
-    self.wristMotor = 9
+rightDriveMotor1 = 0
+rightDriveMotor2 = 1
+rightDriveMotor3 = 2
 
-    #IntakeMotor
-    self.intakeLeft = 4
-    self.intakeRight = 5
+#WristMotor - Talon SRX
+wristMotor = 9
 
-    #D I/O - Digital Input/Output Ports
-    self.leftDriveEncoder1 = 0 #white - channel A
-    self.leftDriveEncoder2 = 1 #brown - channel B
-    self.rightDriveEncoder1 = 2 #white - channel A
-    self.rightDriveEncoder2 = 3 #brown - channel B
+#IntakeMotor
+intakeLeft = 4
+intakeRight = 5
 
-    #Limit Switch Ports
-    self.ArmLimitSwitch = 9
-    self.WristLimitSwitch = 8
+#D I/O - Digital Input/Output Ports
+leftDriveEncoder1 = 0 #white - channel A
+leftDriveEncoder2 = 1 #brown - channel B
+rightDriveEncoder1 = 2 #white - channel A
+rightDriveEncoder2 = 3 #brown - channel B
 
-    #Deadzones
-    self.joystickDeadzone = 0.05
-    self.triggerDeadzone = 0.05
+#Limit Switch Ports
+ArmLimitSwitch = 9
+WristLimitSwitch = 8
 
-    #Arm Motors
-    self.armBaseMotor1 = 3
-    self.armBaseMotor2 = 4
-    self.armBaseMotor3 = 8
+#Deadzones
+joystickDeadzone = 0.05
+triggerDeadzone = 0.05
 
-    #Arm Encoders
-    self.armEncoder1 = 0
-    self.armEncoder2 = 0
-    self.armEncoder3 = 0
+#Arm Motors
+armBaseMotor1 = 3
+armBaseMotor2 = 4
+armBaseMotor3 = 8
 
-    #Pneumatics Control Module (PCM)
-    self.leftIntakeSolenoid = 0
-    self.rightIntakeSolenoid = 1
+#Arm Encoders
+armEncoder1 = 0
+armEncoder2 = 0
+armEncoder3 = 0
 
-    #INTAKE SPEED CONSTANTS
-    self.shootBallFast = 0.8
-    self.shootBallSlow = -0.5
+#Pneumatics Control Module (PCM)
+leftIntakeSolenoid = 0
+rightIntakeSolenoid = 1
 
-    #Arm Angle Level Constants
-    self.groundLevelAngle = 0
-    self.cargoShipAngle = 0
-    self.rocketLevel1Angle = 0
-    self.rocketLevel2Angle = 0
-    self.rocketLevel3Angle = 0
+#INTAKE SPEED CONSTANTS
+shootBallFast = 0.8
+shootBallSlow = -0.5
 
-    #Wrist Angle Level Constants
-    self.raisedWrist = 0
-    self.loweredWrist = 0
+#Arm Angle Level Constants
+groundLevelAngle = 0
+cargoShipAngle = 0
+rocketLevel1Angle = 0
+rocketLevel2Angle = 0
+rocketLevel3Angle = 0
 
-    #Arm Power Constants
-    self.armPowerFast = 0.8
-    self.armPowerSlow = -0.3
+#Wrist Angle Level Constants
+raisedWrist = 0
+loweredWrist = 0
 
-    #Drive Straight PIDF
-    self.DriveStraightP = 0.00
-    self.DriveStraightI = 0
-    self.DriveStraightD = 0.00
-    self.DriveStraightFF = 0
+#Arm Power Constants
+armPowerFast = 0.8
+armPowerSlow = -0.3
 
-    #Drive Distance PIDF
-    self.DistanceP = 0.035
-    self.DistanceI = 0
-    self.DistanceD = 0
-    self.DistanceFF = 0
+#Drive Straight PIDF
+DriveStraightP = 0.00
+DriveStraightI = 0
+DriveStraightD = 0.00
+DriveStraightFF = 0
 
-    #Arm Raise PIDF
-    self.ArmRaiseP = 0.001
-    self.ArmRaiseI = 0
-    self.ArmRaiseD = 0
-    self.ArmRaiseFF = 0
+#Drive Distance PIDF
+DistanceP = 0.035
+DistanceI = 0
+DistanceD = 0
+DistanceFF = 0
 
-    #Arm Lower PIDF
-    self.ArmLowerP = 0
-    self.ArmLowerI = 0
-    self.ArmLowerD = 0
-    self.ArmLowerFF = 0
+#Arm Raise PIDF
+ArmRaiseP = 0.001
+ArmRaiseI = 0
+ArmRaiseD = 0
+ArmRaiseFF = 0
 
-    #Arm Gravity Resist PIDF
-    self.ArmGravityP = 0
-    self.ArmGravityI = 0
-    self.ArmGravityD = 0
-    self.ArmGravityFF = 0
+#Arm Lower PIDF
+ArmLowerP = 0
+ArmLowerI = 0
+ArmLowerD = 0
+ArmLowerFF = 0
 
-    #Wrist Gravity Resist PIDF
-    self.WristGravityP = 0
-    self.WristGravityI = 0
-    self.WristGravityD = 0
-    self.WristGravityFF = 0
+#Arm Gravity Resist PIDF
+ArmGravityP = 0
+ArmGravityI = 0
+ArmGravityD = 0
+ArmGravityFF = 0
 
-    #Wrist Rotate PIDF
-    self.WristRotateP = 0
-    self.WristRotateI = 0
-    self.WristRotateD = 0
-    self.WristRotateFF = 0
+#Wrist Gravity Resist PIDF
+WristGravityP = 0
+WristGravityI = 0
+WristGravityD = 0
+WristGravityFF = 0
 
-    #Turn PIDF
-    self.urnP = 0.5
-    self.TurnI = 0.2
-    self.TurnD = 0.03
-    self.TurnFF = 0.2
+#Wrist Rotate PIDF
+WristRotateP = 0
+WristRotateI = 0
+WristRotateD = 0
+WristRotateFF = 0
 
-    #CAN Device IDs
-    self.PDPID = 1
-    self.PCMID = 0
+#Turn PIDF
+TurnP = 0.5
+TurnI = 0.2
+TurnD = 0.03
+TurnFF = 0.2
 
-    #PCM Device IDs
-    self.intakeSolenoidChannel = 7
+#CAN Device IDs
+PDPID = 1
+PCMID = 0
 
-    #Speed Constants Ball
-    self.intakeSpeed = 0.2
-    self.tossBallSpeed = -0.2
-    self.blastBallSpeed = -0.7
+#PCM Device IDs
+intakeSolenoidChannel = 7
 
-    #Drive Train Presets
-    self.lowDriveSpeed = 0.8
-    self.moderateDriveSpeed = 1.2
-    self.highDriveSpeed = 1.4
+#Speed Constants Ball
+intakeSpeed = 0.2
+tossBallSpeed = -0.2
+blastBallSpeed = -0.7
 
-  #Set speed multipliers
-  def setArmMultiplier(self,multiplier):
-    self.armSpeedMultiplier = multiplier
+#Drive Train Presets
+lowDriveSpeed = 0.8
+moderateDriveSpeed = 1.2
+highDriveSpeed = 1.4
+
+#Set speed multipliers
+def setArmMultiplier(multiplier):
+  armSpeedMultiplier = multiplier
   
 
-  def setWristMultiplier(self,multiplier):
-    self.wristSpeedMultiplier = multiplier
+def setWristMultiplier(multiplier):
+  wristSpeedMultiplier = multiplier
   
-
-  def setDriveMultiplier(self,multiplier):
-    self.driveSpeedMultiplier = multiplier;
+def setDriveMultiplier(multiplier):
+  driveSpeedMultiplier = multiplier;
   
   

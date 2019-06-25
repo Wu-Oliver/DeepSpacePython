@@ -50,7 +50,7 @@ class OI():
         self.mod1AndY = ModifierCombo(self.xboxRB, self.xboxY)
         self.mod1AndA = ModifierCombo(self.xboxRB, self.xboxA)
         self.mod1AndB = ModifierCombo(self.xboxRB, self.xboxB)
-        self.mod1AndDPadUp = ModifierCombo(self.selfxboxRB, self.xboxUp)
+        self.mod1AndDPadUp = ModifierCombo(self.xboxRB, self.xboxUp)
         self.mod1AndDPadDown = ModifierCombo(self.xboxRB, self.xboxDown)
 
         #Defining modifier 2 button combinations for the xbox controller

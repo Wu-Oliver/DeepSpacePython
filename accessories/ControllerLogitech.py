@@ -5,16 +5,16 @@ from wpilib.interfaces import GenericHID
 class Logitech(Joystick):
 
     def __init__(self):
-        self.xButton = JoystickButton(3)
-        self.yButton = JoystickButton(4)
-        self.aButton = JoystickButton(1)
-        self.bButton = JoystickButton(2)
-        self.rightBumper = JoystickButton(6)
-        self.leftBumper = JoystickButton(5)
-        self.startButton = JoystickButton(8)
-        self.selectButton = JoystickButton(7)
-        self.leftStickButton = JoystickButton(9)
-        self.rightStickButton = JoystickButton(10)
+        self.xButton = JoystickButton(self,3)
+        self.yButton = JoystickButton(self,4)
+        self.aButton = JoystickButton(self,1)
+        self.bButton = JoystickButton(self,2)
+        self.rightBumper = JoystickButton(self,6)
+        self.leftBumper = JoystickButton(self,5)
+        self.startButton = JoystickButton(self,8)
+        self.selectButton = JoystickButton(self,7)
+        self.leftStickButton = JoystickButton(self,9)
+        self.rightStickButton = JoystickButton(self,10)
 
     def getLeftStickX(self):
         return self.getX(GenericHID.Hand.kLeft)

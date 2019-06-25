@@ -7,13 +7,13 @@ from subsystems.DriveTrainSubsystem import DriveTrainSubsystem as drive
 #from src.python.frc.robot.subsystems.IntakeSubsystem import IntakeSubsystem as intake
 #from src.python.frc.robot.subsystems.PneumaticsSubsystem import PneumaticsSubsystem as pneumatics
 #from src.python.frc.robot.subsystems.WristSubsystem import WristSubsystem as wrist
-import OI
+from OI import OI
 
 from wpilib.robotbase import RobotBase
 from wpilib import TimedRobot
 
  
-class SpartanRobot(TimedRobot):
+class THICC(TimedRobot):
     
     def robotInit(self):
         self.drivetrain = drive()  
@@ -27,14 +27,14 @@ class SpartanRobot(TimedRobot):
         pass
     
     def autonomousPeriodic(self):
-        self.Scheduler.getInstance().run()
+        pass
         
     def teleopInit(self):
         pass
 
     def teleopPeriodic(self):
-        self.Scheduler.getInstance().run()
+        pass
 
 
 if __name__ == "__main__":
-    wpilib.run(SpartanRobot)
+    wpilib.run(THICC)

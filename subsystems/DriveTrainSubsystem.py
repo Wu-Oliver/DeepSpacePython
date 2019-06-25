@@ -14,9 +14,6 @@ class DriveTrainSubsystem(Subsystem):
         self.leftPower = 0
         self.rightPower = 0
 
-        self.numberOfTicks = 2048
-        self.wheelCircumference = 6*math.pi
-
         self.leftEncoder = Encoder(RobotMap.leftDriveEncoder1,RobotMap.leftDriveEncoder2,False,
         Encoder.EncodingType.k4X)
         self.rightEncoder = Encoder(RobotMap.rightDriveEncoder1,RobotMap.rightDriveEncoder2,True,
@@ -32,8 +29,8 @@ class DriveTrainSubsystem(Subsystem):
         self.leftDriveMotor2 = VictorSP(RobotMap.leftDriveMotor2)
         self.leftDriveMotor3 = VictorSP(RobotMap.leftDriveMotor3)
         
-        self.leftEncoder.setDistancePerPulse(wheelCircumference / numberOfTicks)
-        self.rightEncoder.setDistancePerPulse(wheelCircumference / numberOfTicks)
+        self.leftEncoder.setDistancePerPulse(RobotMap.wheelCircumference / RobotMap.numberOfTicks)
+        self.rightEncoder.setDistancePerPulse(RobotMap.wheelCircumference / RobotMap.numberOfTicks)
         self.leftEncoder.setMaxPeriod(5)
         self.rightEncoder.setMaxPeriod(5)
         self.leftEncoder.setMinRate(0)
@@ -53,13 +50,13 @@ class DriveTrainSubsystem(Subsystem):
         self.rightPower = power
 
     def updateMotorOutputs(self):
-        self.leftDriveMotor1 = -leftPower
-        self.leftDriveMotor2 = -leftPower
-        self.leftDriveMotor3 = -leftPower
+        self.leftDriveMotor1 = -self.leftPower
+        self.leftDriveMotor2 = -self.leftPower
+        self.leftDriveMotor3 = -self.leftPower
         
-        self.rightDriveMotor1 = rightPower
-        self.rightDriveMotor1 = rightPower
-        self.rightDriveMotor1 = rightPower
+        self.rightDriveMotor1 = self.rightPower
+        self.rightDriveMotor1 = self.rightPower
+        self.rightDriveMotor1 = self.rightPower
 
     def putEncoderValues(self):
         self.SmartDashboard.putNumber("Left Encoder Raw", leftEncoder.getRaw())
