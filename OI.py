@@ -81,27 +81,21 @@ class OI():
         self.mod2AndX.whenPressed(ModifierButtonCombination(0, 20))
         self.mod2AndB.whenPressed(ModifierButtonCombination(0, 20))
         self.mod2AndY.whenPressed(ModifierButtonCombination(0, 20))
+
+    def getSecondaryControllerLeftStickY(self):
+        return self.xBoxController.getRawAxis(1)
+
+    def getSecondaryControllerRightStickY(self): 
+        return self.xBoxController.getRawAxis(5)
+
+    def getSecondaryControllerRightStickX(self):
+        return self.xBoxController.getRawAxis(4)
         
+    def getSecondaryControllerLeftTrigger(self):
+        return self.xBoxController.getRawAxis(2)
 
+    def getSecondaryControllerRightTrigger(self):
+        return self.xBoxController.getRawAxis(3)
 
-
-
-
-        def getSecondaryControllerLeftStickY(self):
-            return self.xBoxController.getRawAxis(1)
-
-
-        def getSecondaryControllerRightStickY(self): 
-            return self.secondaryController.getRawAxis(5)
-
-        def getSecondaryControllerRightStickX(self):
-            return self.secondaryController.getRawAxis(4)
-        
-        def getSecondaryControllerLeftTrigger(self):
-            return self.secondaryController.getRawAxis(2)
-
-        def getSecondaryControllerRightTrigger(self):
-            return self.secondaryController.getRawAxis(3)
-
-        def AutonomousOveride(self):
-            return True
+    def AutonomousOveride(self):
+        return True

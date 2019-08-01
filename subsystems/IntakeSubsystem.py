@@ -1,13 +1,13 @@
 from wpilib.command import Subsystem
 from wpilib import VictorSP
-from src.python.frc.robot.RobotMap import RobotMap
+from RobotMap import *
 
 class IntakeSubsystem(Subsystem):
     
     def __init__(self):
 
-        self.intakeLeft = VictorSP(RobotMap.intakeLeft)   
-        self.intakeRight = VictorSP(RobotMap.intakeRight)
+        self.intakeLeft = VictorSP(intakeLeft)   
+        self.intakeRight = VictorSP(intakeRight)
   
     #def initDefaultCommand(self):
         #self.setDefaultCommand(AnalogIntakeCommand())

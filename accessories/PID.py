@@ -1,13 +1,13 @@
 import time
 class PID:
 
-    def __init__(self):
+    def __init__(self, p_gain, i_gain, d_gain, f_gain):
 
         #PID constants
-        self.P_GAIN  = 0
-        self.I_GAIN  = 0
-        self.D_GAIN  = 0
-        self.F_GAIN  = 0
+        self.P_GAIN = p_gain
+        self.I_GAIN = i_gain
+        self.D_GAIN = d_gain
+        self.F_GAIN = f_gain
 
         self.kP = 0
         self.kI = 0
@@ -21,15 +21,6 @@ class PID:
         self.timeDifference = 0
         self.target = 0
         self.output = 0
-    
-    def inputPID(self,p_gain,i_gain,d_gain,f_gain):
-
-        #Instantiating attributes by parameters
-        self.P_GAIN = p_gain
-        self.I_GAIN = i_gain
-        self.D_GAIN = d_gain
-        self.F_GAIN = f_gain
-        self.target = 0
 
     def setTargetPID(self,newTarget):
         self.target = newTarget

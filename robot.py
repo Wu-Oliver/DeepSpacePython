@@ -1,6 +1,7 @@
 
 import wpilib
 import wpilib.drive
+from commandbased import CommandBasedRobot
 #from wpilib.command import Scheduler
 #from src.python.frc.robot.subsystems.ArmSubsystem import ArmSubsystem as arm
 from subsystems.DriveTrainSubsystem import DriveTrainSubsystem as drive
@@ -9,16 +10,15 @@ from subsystems.DriveTrainSubsystem import DriveTrainSubsystem as drive
 #from src.python.frc.robot.subsystems.WristSubsystem import WristSubsystem as wrist
 from OI import OI
 
+from wpilib.command import Scheduler
 from wpilib.robotbase import RobotBase
 from wpilib import TimedRobot
 
- 
-class THICC(TimedRobot):
+class SpartanRobot(CommandBasedRobot):
     
     def robotInit(self):
         self.drivetrain = drive()  
         self.oi = OI()
-        self.drivetrain.updateMotorOutputs()
     
     def robotPeriodic(self):
         self.drivetrain.updateMotorOutputs()
@@ -30,11 +30,11 @@ class THICC(TimedRobot):
         pass
         
     def teleopInit(self):
-        pass
+        print("Teleoperated Mode Initiated!")
 
     def teleopPeriodic(self):
-        pass
+        Scheduler.getInstance.run()
 
 
 if __name__ == "__main__":
-    wpilib.run(THICC)
+    wpilib.run(SpartanRobot)

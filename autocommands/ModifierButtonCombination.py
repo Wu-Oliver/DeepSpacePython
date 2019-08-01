@@ -7,3 +7,4 @@ class ModifierButtonCombination(CommandGroup):
     def ModifierButtonCombination(self,armAngle, wristAngle):
         self.addParallel(ArmRotateDegrees(armAngle))
         self.addParallel(WristRotateDegrees(wristAngle))
+        

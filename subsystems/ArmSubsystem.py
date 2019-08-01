@@ -3,7 +3,7 @@ from rev._impl import CANEncoder
 from rev._impl.autogen.sim import MotorType
 from rev import CANSparkMax
 from wpilib import DigitalInput
-import RobotMap
+from RobotMap import *
 import math
 
 class ArmSubsystem(Subsystem):
@@ -20,10 +20,10 @@ class ArmSubsystem(Subsystem):
 
         self.resetValue = 0
 
-        self.bottomLimitSwitch = DigitalInput(RobotMap.ArmLimitSwitch)
+        self.bottomLimitSwitch = DigitalInput(ArmLimitSwitch)
 
-        self.armMotor1 = CANSparkMax(RobotMap.armBaseMotor1,MotorType.kBrushless)
-        self.armMotor2 = CANSparkMax(RobotMap.armBaseMotor2,MotorType.kBrushless)
+        self.armMotor1 = CANSparkMax(armBaseMotor1,MotorType.kBrushless)
+        self.armMotor2 = CANSparkMax(armBaseMotor2,MotorType.kBrushless)
 
         self.armEncoder1 = self.armMotor1.getEncoder()
         self.armEncoder2 = self.armMotor2.getEncoder()
@@ -72,8 +72,8 @@ class ArmSubsystem(Subsystem):
             self.currentArmPower = power
 
     def updateOutputs(self):
-        self.armMotor1.set(currentArmPower * RobotMap.armSpeedMultiplier)
-        self.armMotor2.set(currentArmPower * RobotMap.armSpeedMultiplier)
+        self.armMotor1.set(currentArmPower * armSpeedMultiplier)
+        self.armMotor2.set(currentArmPower * armSpeedMultiplier)
 
     def getGravityCompensation(self):
         if getRotationAngle() <= 3: return 0

@@ -3,7 +3,8 @@ from wpilib import Encoder
 from wpilib import ADXRS450_Gyro
 from wpilib import VictorSP
 from wpilib import SmartDashboard
-import RobotMap
+from OI import OI
+from RobotMap import *
 import math
 
 class DriveTrainSubsystem(Subsystem):
@@ -14,23 +15,23 @@ class DriveTrainSubsystem(Subsystem):
         self.leftPower = 0
         self.rightPower = 0
 
-        self.leftEncoder = Encoder(RobotMap.leftDriveEncoder1,RobotMap.leftDriveEncoder2,False,
+        self.leftEncoder = Encoder(leftDriveEncoder1,leftDriveEncoder2,False,
         Encoder.EncodingType.k4X)
-        self.rightEncoder = Encoder(RobotMap.rightDriveEncoder1,RobotMap.rightDriveEncoder2,True,
+        self.rightEncoder = Encoder(rightDriveEncoder1,rightDriveEncoder2,True,
         Encoder.EncodingType.k4X)
 
         self.gyro = ADXRS450_Gyro()
 
-        self.rightDriveMotor1 = VictorSP(RobotMap.rightDriveMotor1)
-        self.rightDriveMotor2 = VictorSP(RobotMap.rightDriveMotor2)
-        self.rightDriveMotor3 = VictorSP(RobotMap.rightDriveMotor3)
+        self.rightDriveMotor1 = VictorSP(rightDriveMotor1)
+        self.rightDriveMotor2 = VictorSP(rightDriveMotor2)
+        # self.rightDriveMotor3 = VictorSP(rightDriveMotor3)
 
-        self.leftDriveMotor1 = VictorSP(RobotMap.leftDriveMotor1)
-        self.leftDriveMotor2 = VictorSP(RobotMap.leftDriveMotor2)
-        self.leftDriveMotor3 = VictorSP(RobotMap.leftDriveMotor3)
+        self.leftDriveMotor1 = VictorSP(leftDriveMotor1)
+        self.leftDriveMotor2 = VictorSP(leftDriveMotor2)
+        # self.leftDriveMotor3 = VictorSP(leftDriveMotor3)
         
-        self.leftEncoder.setDistancePerPulse(RobotMap.wheelCircumference / RobotMap.numberOfTicks)
-        self.rightEncoder.setDistancePerPulse(RobotMap.wheelCircumference / RobotMap.numberOfTicks)
+        self.leftEncoder.setDistancePerPulse(wheelCircumference / numberOfTicks)
+        self.rightEncoder.setDistancePerPulse(wheelCircumference / numberOfTicks)
         self.leftEncoder.setMaxPeriod(5)
         self.rightEncoder.setMaxPeriod(5)
         self.leftEncoder.setMinRate(0)
@@ -40,8 +41,8 @@ class DriveTrainSubsystem(Subsystem):
 
         self.gyro.calibrate()
 
-    #def initDefaultCommand(self):
-        #self.setDefaultCommand(ArcadeDrive())
+    # def initDefaultCommand(self):
+    #     self.setDefaultCommand(ArcadeDrive())
 
     def setLeftDrivePower(self,power):
         self.leftPower = power
@@ -52,11 +53,11 @@ class DriveTrainSubsystem(Subsystem):
     def updateMotorOutputs(self):
         self.leftDriveMotor1 = -self.leftPower
         self.leftDriveMotor2 = -self.leftPower
-        self.leftDriveMotor3 = -self.leftPower
+        # self.leftDriveMotor3 = -self.leftPower
         
         self.rightDriveMotor1 = self.rightPower
-        self.rightDriveMotor1 = self.rightPower
-        self.rightDriveMotor1 = self.rightPower
+        self.rightDriveMotor2 = self.rightPower
+        # self.rightDriveMotor3 = self.rightPower
 
     def putEncoderValues(self):
         self.SmartDashboard.putNumber("Left Encoder Raw", leftEncoder.getRaw())
@@ -77,8 +78,8 @@ class DriveTrainSubsystem(Subsystem):
         self.leftEncoder.reset()
         self.rightEncoder.reset()
     
-    #def accelerateDrive(self):
-        #if getLogitechLeftStickY() > 0:
-            #return math.pow(getLogitechLeftStickY(),2)
-        #else:
-            #return -math.pow(getLogitechLeftStickY(),2)
+    def accelerateDrive(self):
+        if self.getSecondaryControllerLeftStickY() > 0:
+            return math.pow(self.getSecondaryControllerLeftStickY(), 2)
+        else:
+            return -math.pow(self.getSecondaryControllerLeftStickY(), 2)
