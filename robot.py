@@ -15,25 +15,36 @@ from wpilib.robotbase import RobotBase
 from wpilib import TimedRobot
 
 class SpartanRobot(CommandBasedRobot):
-    
-    def robotInit(self):
+
+    def __init__(self):
+        super().__init__()
         self.drivetrain = drive()  
         self.oi = OI()
     
+    def robotInit(self):
+        pass
+
+    
     def robotPeriodic(self):
         self.drivetrain.updateMotorOutputs()
-
+    
     def autonomousInit(self):
         pass
     
     def autonomousPeriodic(self):
+        pass
+
+    def disabledInit(self):
+        pass
+    
+    def disabledPeriodic(self):
         pass
         
     def teleopInit(self):
         print("Teleoperated Mode Initiated!")
 
     def teleopPeriodic(self):
-        Scheduler.getInstance.run()
+        pass
 
 
 if __name__ == "__main__":

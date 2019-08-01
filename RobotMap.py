@@ -144,6 +144,4 @@ def setWristMultiplier(multiplier):
   wristSpeedMultiplier = multiplier
     
 def setDriveMultiplier(multiplier):
-  driveSpeedMultiplier = multiplier;
-    
-    
+  driveSpeedMultiplier = multiplier

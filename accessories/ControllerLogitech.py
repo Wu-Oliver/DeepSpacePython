@@ -4,7 +4,9 @@ from wpilib.interfaces import GenericHID
 
 class Logitech(Joystick):
 
-    def __init__(self):
+    def __init__(self, port):
+
+        super().__init__(port)
         self.xButton = JoystickButton(self, 3)
         self.yButton = JoystickButton(self, 4)
         self.aButton = JoystickButton(self, 1)

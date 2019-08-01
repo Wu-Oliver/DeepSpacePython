@@ -1,10 +1,11 @@
-from wpilib.joystick import Joystick
+from wpilib.xboxcontroller import XboxController
 from wpilib.buttons.joystickbutton import JoystickButton
 from wpilib.interfaces import GenericHID
 
-class Xbox(Joystick):
+class Xbox(XboxController):
     
-    def __init__(self):
+    def __init__(self, port):
+        super().__init__(port)
         self.xButton = JoystickButton(self,3)
         self.yButton = JoystickButton(self,4)
         self.aButton = JoystickButton(self,1)

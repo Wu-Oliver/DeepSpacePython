@@ -14,8 +14,8 @@ class OI():
     def __init__(self):
         
         #Defining the main controllers
-        self.logitechController = Logitech()
-        self.xBoxController = Xbox()
+        self.logitechController = Logitech(0)
+        self.xBoxController = Xbox(1)
 
         #Xbox Controller Buttons
         self.xboxA = JoystickButton(self.xBoxController, 1)
