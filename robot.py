@@ -2,23 +2,27 @@
 import wpilib
 import wpilib.drive
 from commandbased import CommandBasedRobot
-#from wpilib.command import Scheduler
-#from src.python.frc.robot.subsystems.ArmSubsystem import ArmSubsystem as arm
-from subsystems.DriveTrainSubsystem import DriveTrainSubsystem as drive
-#from src.python.frc.robot.subsystems.IntakeSubsystem import IntakeSubsystem as intake
-#from src.python.frc.robot.subsystems.PneumaticsSubsystem import PneumaticsSubsystem as pneumatics
-#from src.python.frc.robot.subsystems.WristSubsystem import WristSubsystem as wrist
+# from wpilib.command import Scheduler
+from subsystems.ArmSubsystem import ArmSubsystem
+from subsystems.DriveTrainSubsystem import DriveTrainSubsystem
+from subsystems.IntakeSubsystem import IntakeSubsystem
+from subsystems.PneumaticsSubsystem import PneumaticsSubsystem
+from subsystems.WristSubsystem import WristSubsystem
 from OI import OI
 
 from wpilib.command import Scheduler
-from wpilib.robotbase import RobotBase
-from wpilib import TimedRobot
+# from wpilib.robotbase import RobotBase
+# from wpilib import TimedRobot
 
 class SpartanRobot(CommandBasedRobot):
 
     def __init__(self):
         super().__init__()
-        self.drivetrain = drive()  
+        self.drivetrain = DriveTrainSubsystem()
+        self.intake = IntakeSubsystem()
+        self.pneumatics = PneumaticsSubsystem()
+        self.wrist = WristSubsystem()
+        self.arm = ArmSubsystem()
         self.oi = OI()
     
     def robotInit(self):

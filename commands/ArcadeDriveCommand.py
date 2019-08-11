@@ -24,8 +24,8 @@ class ArcadeDriveCommand(Command):
         self.error = SpartanRobot.drivetrain.getLeftDistance() - SpartanRobot.drivetrain.getRightDistance()
 
 
-        self.leftJoyY = SpartanRobot.oi.getSecondaryControllerLeftStickY()
-        self.rightJoyX = SpartanRobot.oi.getSecondaryControllerRightStickX()
+        self.leftJoyY = SpartanRobot.oi.xBoxController.getLeftStickY()
+        self.rightJoyX = SpartanRobot.oi.xBoxController.getRightStickX()
 
         if self.leftJoyY > -joystickDeadzone and self.leftJoyY < joystickDeadzone:
             self.leftJoyY = 0

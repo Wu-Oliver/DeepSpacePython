@@ -8,8 +8,8 @@ numberOfTicks = 2048
 wheelCircumference = 6*math.pi
 
   #PWM - Pulse Width Modulation Ports
-leftDriveMotor1 = 7
-leftDriveMotor2 = 8
+leftDriveMotor1 = 2
+leftDriveMotor2 = 3
   # leftDriveMotor3 = 9
 
 rightDriveMotor1 = 0
