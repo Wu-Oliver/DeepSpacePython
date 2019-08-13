@@ -3,6 +3,7 @@ from wpilib import Encoder
 from wpilib import ADXRS450_Gyro
 from wpilib import VictorSP
 from wpilib import SmartDashboard
+from commands.ArcadeDriveCommand import ArcadeDriveCommand
 from OI import OI
 from RobotMap import *
 import math
@@ -41,8 +42,8 @@ class DriveTrainSubsystem(Subsystem):
 
         self.gyro.calibrate()
 
-    # def initDefaultCommand(self):
-    #     self.setDefaultCommand(ArcadeDrive())
+    def initDefaultCommand(self):
+        self.setDefaultCommand(ArcadeDriveCommand())
 
     def setLeftDrivePower(self,power):
         self.leftPower = power

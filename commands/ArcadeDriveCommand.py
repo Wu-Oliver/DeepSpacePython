@@ -2,13 +2,13 @@ from wpilib.command import Command
 from wpilib.smartdashboard import SmartDashboard
 from accessories.PID import PID
 from RobotMap import *
-from robot import SpartanRobot
+import subsystems
 
 class ArcadeDriveCommand(Command):
 
     def __init__(self):
 
-        self.requires(SpartanRobot.drivetrain)
+        self.requires(subsystems.drivetrain)
 
         self.leftJoyY = 0
         self.rightJoyX = 0
@@ -17,15 +17,15 @@ class ArcadeDriveCommand(Command):
         self.gain = 0
 
         self.straightPID = PID(DriveStraightP, DriveStraightI, DriveStraightD, DriveStraightFF)
-        SpartanRobot.drivetrain.resetEncoders()
+        subsystems.drivetrain.resetEncoders()
     
     def execute(self):
 
-        self.error = SpartanRobot.drivetrain.getLeftDistance() - SpartanRobot.drivetrain.getRightDistance()
+        self.error = subsystems.drivetrain.getLeftDistance() - subsystems.drivetrain.getRightDistance()
 
 
-        self.leftJoyY = SpartanRobot.oi.xBoxController.getLeftStickY()
-        self.rightJoyX = SpartanRobot.oi.xBoxController.getRightStickX()
+        self.leftJoyY = subsystems.oi.xBoxController.getLeftStickY()
+        self.rightJoyX = subsystems.oi.xBoxController.getRightStickX()
 
         if self.leftJoyY > -joystickDeadzone and self.leftJoyY < joystickDeadzone:
             self.leftJoyY = 0
@@ -34,18 +34,18 @@ class ArcadeDriveCommand(Command):
             self.rightJoyX = 0
         
         if self.rightJoyX != 0:
-            SpartanRobot.drivetrain.setLeftDrivePower(SpartanRobot.drivetrain.accelerateDrive() - self.rightJoyX)
-            SpartanRobot.drivetrain.setRightDrivePower(SpartanRobot.drivetrain.accelerateDrive() + self.rightJoyX)    
+            subsystems.drivetrain.setLeftDrivePower(subsystems.drivetrain.accelerateDrive() - self.rightJoyX)
+            subsystems.drivetrain.setRightDrivePower(subsystems.drivetrain.accelerateDrive() + self.rightJoyX)    
 
         elif rightJoyX == 0  and leftJoyY != 0:
             self.straightPID.updatePID(self.error)  
             self.gain = self.straightPID.getOutput()
-            SpartanRobot.drivetrain.setLeftDrivePower(SpartanRobot.drivetrain.accelerateDrive() - self.gain)
-            SpartanRobot.drivetrain.setRightDrivePower(SpartanRobot.drivetrain.accelerateDrive() + self.gain)  
+            subsystems.drivetrain.setLeftDrivePower(subsystems.drivetrain.accelerateDrive() - self.gain)
+            subsystems.drivetrain.setRightDrivePower(subsystems.drivetrain.accelerateDrive() + self.gain)  
 
         else:
-            SpartanRobot.drivetrain.setLeftDrivePower(0.0)
-            SpartanRobot.drivetrain.setRightDrivePower(0.0)
+            subsystems.drivetrain.setLeftDrivePower(0.0)
+            subsystems.drivetrain.setRightDrivePower(0.0)
     
     def isFinished():
         return False

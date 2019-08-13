@@ -2,35 +2,20 @@
 import wpilib
 import wpilib.drive
 from commandbased import CommandBasedRobot
-# from wpilib.command import Scheduler
-from subsystems.ArmSubsystem import ArmSubsystem
-from subsystems.DriveTrainSubsystem import DriveTrainSubsystem
-from subsystems.IntakeSubsystem import IntakeSubsystem
-from subsystems.PneumaticsSubsystem import PneumaticsSubsystem
-from subsystems.WristSubsystem import WristSubsystem
 from OI import OI
-
+import subsystems
 from wpilib.command import Scheduler
 # from wpilib.robotbase import RobotBase
 # from wpilib import TimedRobot
 
 class SpartanRobot(CommandBasedRobot):
-
-    def __init__(self):
-        super().__init__()
-        self.drivetrain = DriveTrainSubsystem()
-        self.intake = IntakeSubsystem()
-        self.pneumatics = PneumaticsSubsystem()
-        self.wrist = WristSubsystem()
-        self.arm = ArmSubsystem()
-        self.oi = OI()
     
     def robotInit(self):
-        pass
+        subsystems.init()
+        oi = OI()
 
-    
     def robotPeriodic(self):
-        self.drivetrain.updateMotorOutputs()
+        subsystems.drivetrain.updateMotorOutputs()
     
     def autonomousInit(self):
         pass
@@ -42,13 +27,14 @@ class SpartanRobot(CommandBasedRobot):
         pass
     
     def disabledPeriodic(self):
-        pass
+        Scheduler.getInstance().run()
         
     def teleopInit(self):
         print("Teleoperated Mode Initiated!")
+        Scheduler.getInstance().run()
 
     def teleopPeriodic(self):
-        pass
+        Scheduler.getInstance().run()
 
 
 if __name__ == "__main__":
