@@ -5,7 +5,7 @@ from accessories.ControllerXbox import Xbox
 from wpilib.interfaces import GenericHID
 from accessories.POVButton import POVButton
 from accessories.ModifierCombo import ModifierCombo
-from autocommands.ModifierButtonCombination import ModifierButtonCombination
+# from autocommands.ModifierButtonCombination import ModifierButtonCombination
 class OI():
     
     def __init__(self):
@@ -15,8 +15,8 @@ class OI():
         self.xBoxController = Xbox(0)
 
         #Xbox Controller Button
-        self.xboxUp = POVButton(xBoxController, 0)
-        self.xboxDown = POVButton(xBoxController, 180)
+        self.xboxUp = POVButton(self.xBoxController, 0)
+        self.xboxDown = POVButton(self.xBoxController, 180)
 
 
         # self.xboxUp = POVButton(self.logitechController, 0)
@@ -31,10 +31,10 @@ class OI():
         self.mod1AndDPadDown = ModifierCombo(self.xBoxController.rightBumper, self.xboxDown)
 
         #Defining modifier 2 button combinations for the xbox controller
-        self.mod2AndA = ModifierCombo(self.xBoxController.leftBumper, self.xboxA) 
-        self.mod2AndX = ModifierCombo(self.xBoxController.leftBumper, self.xboxX)
-        self.mod2AndB = ModifierCombo(self.xBoxController.leftBumper, self.xboxB)
-        self.mod2AndY = ModifierCombo(self.xBoxController.leftBumper, self.xboxY)
+        self.mod2AndA = ModifierCombo(self.xBoxController.leftBumper, self.xBoxController.aButton) 
+        self.mod2AndX = ModifierCombo(self.xBoxController.leftBumper, self.xBoxController.xButton)
+        self.mod2AndB = ModifierCombo(self.xBoxController.leftBumper, self.xBoxController.bButton)
+        self.mod2AndY = ModifierCombo(self.xBoxController.leftBumper, self.xBoxController.yButton)
         self.mod2AndDPadUp = ModifierCombo(self.xBoxController.leftBumper, self.xboxUp)
         self.mod2AndDPadDown = ModifierCombo(self.xBoxController.leftBumper, self.xboxDown)
         
