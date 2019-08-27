@@ -2,39 +2,40 @@ from wpilib.command import Subsystem
 from wpilib import Encoder
 from wpilib import ADXRS450_Gyro
 from wpilib import VictorSP
+import accessories
 from wpilib import SmartDashboard
 from commands.ArcadeDriveCommand import ArcadeDriveCommand
 from robot import SpartanRobot
-from RobotMap import *
+import RobotMap
 import math
 
 class DriveTrainSubsystem(Subsystem):
 
     def __init__(self):
-
+        self.robot = SpartanRobot.getRobotObject(self)
         self.setDefaultCommand(ArcadeDriveCommand())
         
         #Power output to motors in range of -1 to 1
         self.leftPower = 0
         self.rightPower = 0
 
-        self.leftEncoder = Encoder(leftDriveEncoder1,leftDriveEncoder2,False,
+        self.leftEncoder = Encoder(RobotMap.leftDriveEncoder1, RobotMap.leftDriveEncoder2, False,
         Encoder.EncodingType.k4X)
-        self.rightEncoder = Encoder(rightDriveEncoder1,rightDriveEncoder2,True,
+        self.rightEncoder = Encoder(RobotMap.rightDriveEncoder1, RobotMap.rightDriveEncoder2, True,
         Encoder.EncodingType.k4X)
 
         self.gyro = ADXRS450_Gyro()
 
-        self.rightDriveMotor1 = VictorSP(rightDriveMotor1)
-        self.rightDriveMotor2 = VictorSP(rightDriveMotor2)
+        self.rightDriveMotor1 = VictorSP(RobotMap.rightDriveMotor1)
+        self.rightDriveMotor2 = VictorSP(RobotMap.rightDriveMotor2)
         # self.rightDriveMotor3 = VictorSP(rightDriveMotor3)
 
-        self.leftDriveMotor1 = VictorSP(leftDriveMotor1)
-        self.leftDriveMotor2 = VictorSP(leftDriveMotor2)
+        self.leftDriveMotor1 = VictorSP(RobotMap.leftDriveMotor1)
+        self.leftDriveMotor2 = VictorSP(RobotMap.leftDriveMotor2)
         # self.leftDriveMotor3 = VictorSP(leftDriveMotor3)
         
-        self.leftEncoder.setDistancePerPulse(wheelCircumference / numberOfTicks)
-        self.rightEncoder.setDistancePerPulse(wheelCircumference / numberOfTicks)
+        self.leftEncoder.setDistancePerPulse(RobotMap.wheelCircumference / RobotMap.numberOfTicks)
+        self.rightEncoder.setDistancePerPulse(RobotMap.wheelCircumference / RobotMap.numberOfTicks)
         self.leftEncoder.setMaxPeriod(5)
         self.rightEncoder.setMaxPeriod(5)
         self.leftEncoder.setMinRate(0)
@@ -44,10 +45,10 @@ class DriveTrainSubsystem(Subsystem):
 
         self.gyro.calibrate()
 
-    def setLeftDrivePower(self,power):
+    def setLeftDrivePower(self, power):
         self.leftPower = power
 
-    def setRightDrivePower(self,power):
+    def setRightDrivePower(self, power):
         self.rightPower = power
 
     def updateMotorOutputs(self):
@@ -60,10 +61,10 @@ class DriveTrainSubsystem(Subsystem):
         # self.rightDriveMotor3 = self.rightPower
 
     def putEncoderValues(self):
-        self.SmartDashboard.putNumber("Left Encoder Raw", leftEncoder.getRaw())
-        self.SmartDashboard.putNumber("Right Encoder Raw", rightEncoder.getRaw())
-        self.SmartDashboard.putNumber("Left Encoder Dist Per Pulse", leftEncoder.getDistancePerPulse())
-        self.SmartDashboard.putNumber("Right Encoder Dist Per Pulse", rightEncoder.getDistancePerPulse())
+        SmartDashboard.putNumber("Left Encoder Raw", self.leftEncoder.getRaw())
+        SmartDashboard.putNumber("Right Encoder Raw", self.rightEncoder.getRaw())
+        SmartDashboard.putNumber("Left Encoder Dist Per Pulse", self.leftEncoder.getDistancePerPulse())
+        SmartDashboard.putNumber("Right Encoder Dist Per Pulse", self.rightEncoder.getDistancePerPulse())
 
     def getLeftDistance(self):
         return self.leftEncoder.getDistance()
@@ -79,7 +80,8 @@ class DriveTrainSubsystem(Subsystem):
         self.rightEncoder.reset()
     
     def accelerateDrive(self):
-        if SpartanRobot.oi.xBoxController.getRawAxis(1) > 0:
-            return math.pow(SpartanRobot.oi.xBoxController.getRawAxis(1), 2)
+        if self.robot.oi.xBoxController.getRawAxis(1) > 0:
+            return math.pow(self.robot.oi.xBoxController.getRawAxis(1), 2)
         else:
-            return -math.pow(SpartanRobot.oi.xBoxController.getRawAxis(1), 2)
+            return -math.pow(self.robot.oi.xBoxController.getRawAxis(1), 2)
+    

@@ -2,8 +2,8 @@ from wpilib.command import Command
 from wpilib.smartdashboard import SmartDashboard
 from accessories.PID import PID
 from RobotMap import *
-from robot import SpartanRobot
-import OI
+import subsystems
+import accessories
 
 class AnalogArmCommand(Command):
     
@@ -16,22 +16,22 @@ class AnalogArmCommand(Command):
         
         self.lastArmAngle = 0
 
-        self.armGravityPID = PID(ArmGravityP,ArmGravityI,ArmGravityD,
+        self.armGravityPID = PID(ArmGravityP, ArmGravityI, ArmGravityD,
         ArmGravityFF)
 
-        self.requires(SpartanRobot.arm)
+        self.requires(subsystems.arm)
 
         self.armGravityPID.setTargetPID(0)
         
 
     def execute(self):
-       
+       pass
         #SDB halt
         #self.armGravityPID(SmartDashboard.getNumber("ARM GRAVITY P:", ArmGravityP),
         #SmartDashboard.getNumber("ARM GRAVITY I:", ArmGravityP),
         #SmartDashboard.getNumber("ARM GRAVITY D:", ArmGravityP),
         #SmartDashboard.getNumber("ARM GRAVITY FF:", ArmGravityP))
-        self.leftTrigger = OI()
+        # self.leftTrigger = OI()
         
 
 
