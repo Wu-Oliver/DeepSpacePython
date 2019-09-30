@@ -1,8 +1,7 @@
-
 import wpilib
 import wpilib.drive
 from commandbased import CommandBasedRobot
-from subsystems.DriveTrainSubsystem import driveTrain
+from subsystems.testDrive import DriveTrainSubsystem
 import accessories
 from wpilib.command import Scheduler
 from accessories.OI import OI
@@ -11,12 +10,12 @@ from accessories.OI import OI
 class SpartanRobot(CommandBasedRobot):
 
     def robotInit(self):
-        self.driveTrain = driveTrain
+        self.driveTrain = DriveTrainSubsystem()
         self.oi = OI()
 
     def robotPeriodic(self):
         self.driveTrain.updateMotorOutputs()
-    
+
     def autonomousInit(self):
         pass
     

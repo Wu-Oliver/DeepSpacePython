@@ -13,7 +13,6 @@ class DriveTrainSubsystem(Subsystem):
 
     def __init__(self):
         self.robot = SpartanRobot.getRobotObject(self)
-        self.setDefaultCommand(ArcadeDriveCommand())
         
         #Power output to motors in range of -1 to 1
         self.leftPower = 0
@@ -45,6 +44,9 @@ class DriveTrainSubsystem(Subsystem):
 
         self.gyro.calibrate()
 
+    def initDefaultCommand(self):
+        self.setDefaultCommand(ArcadeDriveCommand())
+        
     def setLeftDrivePower(self, power):
         self.leftPower = power
 
@@ -84,4 +86,4 @@ class DriveTrainSubsystem(Subsystem):
             return math.pow(self.robot.oi.xBoxController.getRawAxis(1), 2)
         else:
             return -math.pow(self.robot.oi.xBoxController.getRawAxis(1), 2)
-    
+            
