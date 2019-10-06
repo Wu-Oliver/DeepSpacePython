@@ -75,4 +75,3 @@ class OI:
 
     # def AutonomousOveride(self):
     #     return True
-oi = OI()
